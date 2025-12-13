@@ -71,7 +71,7 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`username`, `Fname`, `gender`, `CID`, `DID`, `DOV`, `Timestamp`, `Status`) VALUES
-('likhita_avl', 'Likhita', 'female', 5, 101, '2020-12-18', '2020-12-17 10:02:48', 'Booking Registered.Wait for the update');
+('kritan_dotel', 'Kritan Dotel', 'male', 5, 101, '2020-12-18', '2020-12-17 10:02:48', 'Booking Registered.Wait for the update');
 
 -- --------------------------------------------------------
 
@@ -93,11 +93,10 @@ CREATE TABLE `clinic` (
 --
 
 INSERT INTO `clinic` (`CID`, `name`, `address`, `town`, `city`, `contact`) VALUES
-(1, 'Care Multi Speciality Clinic', ' 8-3-1101/1, Plot No 105 A,Bes', 'Sri Nagar Colony', 'Hyderabad', '8971754321'),
-(5, 'MEDEXPRESS Clinic & Diagnostic', '83/A, Main Road, Vengal Rao Na', 'Vengal Rao Nagar', 'hyderabad', '1234567890'),
-(10, 'Dr Agarwals Eye Hospital', 'Mumtaz Complex, Junction, Reth', ' Mehdipatnam', 'Hyderabad', '8899776655'),
-(11, 'sample1', 'sample1', 'sample1', 'sample city 1', '123'),
-(12, 'sample 2', 'sample 2 ', 'sample 2', 'sample city 2', '456');
+(1, 'Dilen Pharma', 'Payautar', 'Kapan', 'Kathmandu', '1234567890'),
+(5, 'MEDEXPRESS Clinic & Diagnostic', 'Narayantar', 'Jorpati', 'Kathmandu', '1234567890'),
+(10, 'Dr Agarwals Eye Hospital', 'Pipalbot', 'Jhamsikhel', 'Lalitpur', '1357811158');
+
 
 -- --------------------------------------------------------
 
@@ -124,13 +123,11 @@ CREATE TABLE `deleted_doctors` (
 --
 
 INSERT INTO `deleted_doctors` (`DID`, `name`, `gender`, `dob`, `experience`, `specialisation`, `contact`, `address`, `username`, `password`, `region`) VALUES
-(0, 'likhita', 'female', '2020-09-16', 'sdas', 'abc', 'abc', 'abc', 'abc', 'abc', 'abc'),
-(1, 'Karthik', 'male', '2020-12-11', 'abc', 'abc', '8897976476', 'frrfs', 'as', 'ksdhusidsn', 'hyderabad'),
-(2, 'dsd', 'female', '2020-12-10', 'abc', 'abc', '1', 'HNo:50/A, Flat No:G-2, MIGH, Vengalarao ', 'sa', 'abcdefghij', 'abc'),
-(4, 'abc', 'f', '2020-12-09', 'abc', 'abc', '8897976476', 'frrfs', 'sa', 'likhitaavl', 'rer'),
-(5, 'abc', 'female', '2000-03-10', 'abc', 'abc', '8897976476', 'abc', 'xyz', '1234567890', 'abc'),
-(6, 'dsd', 'female', '2000-03-10', 'xyz', 'xyz', '8897976476', 'xyz', 'xyz', 'abcdefghij', 'xyz'),
-(50, 'doctor1', 'male', '2020-12-11', 'abc', 'abc', '8897976476', 'abc', 'doctor1', '1234567890', 'abc');
+(0, 'avishek', 'female', '2020-09-16', 'sdas', 'abc', 'abc', 'abc', 'abc', 'abc', 'abc'),
+(1, 'Shyam', 'male', '2020-12-11', 'abc', 'abc', '8897976476', 'frrfs', 'as', 'ksdhusidsn', 'Kathmandu'),
+(2, 'dsd', 'female', '2020-12-10', 'abc', 'abc', '1', 'Bhotechaur', 'sa', 'abcdefghij', 'abc'),
+(4, 'abc', 'f', '2020-12-09', 'abc', 'abc', '8897976476', 'frrfs', 'sa', 'hgvd', 'rer');
+
 
 -- --------------------------------------------------------
 
@@ -157,9 +154,9 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`DID`, `name`, `gender`, `dob`, `experience`, `specialisation`, `contact`, `address`, `username`, `password`, `region`) VALUES
-(8, 'Maan Singh', 'male', '1990-11-03', '4', 'Physician', '8897976476', 'first floor, above united bank of india,', 'maan_singh', 'mannsingh', 'Hyderabad'),
-(101, 'B Bhuvaneswara Raju', 'male', '1975-04-04', '20', 'Neurosurgeon', '9876543210', '83/A, Main Road, Vengal Rao Nagar, Venga', 'raju_1234', '1234567890', 'Hyderabad'),
-(102, 'Radhika Reddy', 'female', '1987-12-11', '7', 'General Dentistry', '8897976476', 'CARE Hospitals Outpatient Centre, Road N', 'radhika_reddy', 'radhikareddy', 'Bangalore');
+(8, 'Maan Singh Sanjel', 'male', '1990-11-03', '4', 'Physician', '8897976476', 'Boudha', 'maan_singh_sanjel', 'mannsingh', 'Kathmandu'),
+(101, 'Raju Lama', 'male', '1975-04-04', '20', 'Neurosurgeon', '9876543210', 'Ilam', 'raju_1234', '1234567890', 'Nepal'),
+
 
 --
 -- Triggers `doctor`
@@ -215,7 +212,7 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`id`, `name`, `gender`, `dob`, `phone`, `username`, `password`, `email`) VALUES
-(7, 'Likhita', 'Female', '2020-12-10', '1234567890', 'likhita_avl', 'likhita', 'avllikhita@gmail.com');
+(5, 'Avishek', 'Male', '2020-12-10', '1234567890', 'Avi_shek', 'Avishek', 'avishek@gmail.com');
 
 --
 -- Indexes for dumped tables

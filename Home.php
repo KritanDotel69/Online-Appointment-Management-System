@@ -10,7 +10,7 @@
             <h2 style="text-align:left;"> Welcome!!!</h2><br>
             <p style="text-align:left;font-size:40px; font-family: cursive; color: black;position: absolute; top: 30%;">Consult Now </p><br>
             <button onclick="document.getElementById('id01').style.display='block'" style="position: absolute;top: 60%;left:5%;">LOGIN</button>
-            <button onclick="window.location.href='signup.php'" style="position: absolute;top: 70%;left:5%;">SIGNUP</button>
+            <button onclick="window.location.href='InsertSgnup.php'" style="position: absolute;top: 70%;left:5%;">SIGNUP</button>
         </div>
         
         <div class="footer">

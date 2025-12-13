@@ -94,7 +94,7 @@ error_reporting(0);
 		    </select>
 		
 		    <label style="font-size:20px;font-family:cursive" >Doctor:</label>
-		    <select name="doctor" id="doctor-list">
+		    <select id="doctor-list" name="doctor">
             <option value="">Select Doctor</option>
             
 		    </select>

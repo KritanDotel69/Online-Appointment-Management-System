@@ -13,9 +13,9 @@ if(isset($_POST['signup'])){
     $passwordr=$_POST['pwdr'];
 }
 
-$query="SELECT * FROM PATIENT WHERE EMAIL='$email'";
-$data=mysqli_query($conn,$query);
-$num=mysqli_num_rows($data);
+// $query="SELECT * FROM PATIENT WHERE EMAIL='$email'";
+// $data=mysqli_query($conn,$query);
+// $num=mysqli_num_rows($data);
 
 if($num == 1){
     echo "<script>
@@ -25,7 +25,7 @@ if($num == 1){
         type: 'error' 
         },
         function(){
-            window.location.href = 'signup.php';
+            window.location.href = 'signup';
             });
             </script>";
         }
