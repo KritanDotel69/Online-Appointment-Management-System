@@ -1,5 +1,5 @@
 <?php
-// Error reporting for debugging - remove in production
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -9,7 +9,7 @@ $message = "";
 $msg_class = "";
 
 if (isset($_POST['signup'])) {
-    // Sanitize inputs
+   
     $name     = mysqli_real_escape_string($conn, $_POST['name']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email    = mysqli_real_escape_string($conn, $_POST['email']);
@@ -17,12 +17,12 @@ if (isset($_POST['signup'])) {
     $password = $_POST['pwd'];
     $passwordr = $_POST['pwdr'];
 
-    // 1. Check if passwords match
+ 
     if ($password !== $passwordr) {
         $message = "Passwords do not match!";
         $msg_class = "error";
     } 
-    // 2. Check if email or username already exists
+    
     else {
         $check_query = "SELECT * FROM patient WHERE email='$email' OR username='$username'";
         $result = mysqli_query($conn, $check_query);
