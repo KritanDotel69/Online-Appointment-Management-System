@@ -9,7 +9,7 @@ $message = "";
 $msg_class = "";
 
 if (isset($_POST['signup'])) {
-   
+    
     $name     = mysqli_real_escape_string($conn, $_POST['name']);
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email    = mysqli_real_escape_string($conn, $_POST['email']);
@@ -17,12 +17,16 @@ if (isset($_POST['signup'])) {
     $password = $_POST['pwd'];
     $passwordr = $_POST['pwdr'];
 
- 
-    if ($password !== $passwordr) {
+    // 1. PHP Server-Side Validation: Check if name contains only letters and spaces
+    if (!preg_match("/^[a-zA-Z\s]+$/", $name)) {
+        $message = "Full Name must contain only letters and spaces!";
+        $msg_class = "error";
+    } 
+    // 2. Check if passwords match
+    elseif ($password !== $passwordr) {
         $message = "Passwords do not match!";
         $msg_class = "error";
     } 
-    
     else {
         $check_query = "SELECT * FROM patient WHERE email='$email' OR username='$username'";
         $result = mysqli_query($conn, $check_query);
@@ -80,7 +84,7 @@ if (isset($_POST['signup'])) {
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 6px;
-            box-sizing: border-box; /* Crucial for padding */
+            box-sizing: border-box;
         }
         .btn {
             width: 100%;
@@ -118,7 +122,7 @@ if (isset($_POST['signup'])) {
     <form method="POST" action="signup.php">
         <div class="input-group">
             <label>Full Name</label>
-            <input type="text" name="name" required placeholder="John Doe">
+            <input type="text" name="name" required pattern="[A-Za-z\s]+" title="Only letters and spaces are allowed" placeholder="John Doe">
         </div>
         <div class="input-group">
             <label>Username</label>

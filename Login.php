@@ -29,7 +29,7 @@
         <div class="container" style="width: 100%;">
             <form method="POST">
                 <button type="button" onclick="window.location.href='Booking.php'" class="btn" style="position: absolute;top: 40%;left: 30%;">Book Appointment</button><br><br>
-                <button type="button" onclick="window.location.href='PatientsAppointment.php'" class="btn" style="position: absolute;top: 48%;left: 30%;">Show Appointment</button><br><br>
+                <button type="button" onclick="window.location.href='ViewAppointment.php'" class="btn" style="position: absolute;top: 48%;left: 30%;">View Appointment</button><br><br>
                 <button type="button" onclick="window.location.href='CancelBooking.php'" class="btn" style="position: absolute;top: 56%;left: 30%;">Cancel Appointment</button><br><br>
                 <button type="button" onclick="window.location.href='Home.php'" class="btn" style="position: absolute;top: 65%;left: 30%;">LOGOUT</button><br><br>
             </form>
