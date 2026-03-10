@@ -25,7 +25,7 @@
         type: 'error' 
         },
         function(){
-            window.location.href = 'Home.php';
+            window.location.href = 'Login.php';
             });
             </script>";   
     }
@@ -42,7 +42,7 @@
         type: 'success' 
         },
         function(){
-            window.location.href = 'Login.php';
+            window.location.href = 'Home.php';
             });
             </script>";   
     }

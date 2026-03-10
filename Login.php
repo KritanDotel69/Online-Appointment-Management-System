@@ -1,54 +1,43 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="main.css">
-        <style >
-            .btn{
-    font-size: 17px;
-    color: #fff;
-    background: #ff0157;
-    display: inline-block;
-    padding: 10px 30px;
-    margin-top: 20px;
-    /*text-transform: uppercase;*/
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: 0.5s;
-}
-.btn:hover{
-    letter-spacing: 3px;
-}
-        </style>
-    </head>
-    <body style="background-image: url(Images/appointment.png);" >
+<body style="background-image: url(Images/stethoscope.jpg);">
+    <link rel="stylesheet" href="main.css">
         <div class="header">
             <ul>
-                <li style="float: left;;"><strong> Welcome User !! </strong> </li>
-
+                <li style="float: left; border-right: none;"> <a href="Home.php" class="logo"> <img src="Images/Pic9.png" width="70px" height="60px"> <strong> WeCare </strong> Online Apppointment System </a> </li>
             </ul>
         </div>
-        <div class="container" style="width: 100%;">
-            <form method="POST">
-                <button type="button" onclick="window.location.href='Booking.php'" class="btn" style="position: absolute;top: 40%;left: 30%;">Book Appointment</button><br><br>
-                <button type="button" onclick="window.location.href='ViewAppointment.php'" class="btn" style="position: absolute;top: 48%;left: 30%;">View Appointment</button><br><br>
-                <button type="button" onclick="window.location.href='CancelBooking.php'" class="btn" style="position: absolute;top: 56%;left: 30%;">Cancel Appointment</button><br><br>
-                <button type="button" onclick="window.location.href='Home.php'" class="btn" style="position: absolute;top: 65%;left: 30%;">LOGOUT</button><br><br>
-            </form>
+        <div class="centre">
+            <h2 style="text-align:left;"> Welcome!!!</h2><br>
+            <p style="text-align:left;font-size:40px; font-family: cursive; color: black;position: absolute; top: 30%;">Consult Now </p><br>
+            <button onclick="document.getElementById('id01').style.display='block'" style="position: absolute;top: 60%;left:5%;">LOGIN</button>
+            <button onclick="window.location.href='Signup.php'" style="position: absolute;top: 70%;left:5%;">SIGNUP</button>
         </div>
-        <?php
-        if(isset($_POST['check']))
-        {   
-            $conn=mysqli_connect('localhost','root','','appointment');
-            if(isset($_POST['cancel']))
-            {
-        	header( "Refresh:1; url=CancelBooking.php"); 
-            }
-            if(isset($_POST['logout']))
-            {
-	            session_unset();
-	            session_destroy();
-	            header( "Refresh:1; url=Home.php"); 
-            }
-        }
-        ?>
-    </body>
+        
+        <div class="footer">
+            <ul style="position: absolute;top:90%;background-color:black;">
+                <li> <a href="adminlogin.php">Admin Login </a> </li>
+            </ul>
+        </div>
+<div id="id01" class="modal" >
+    <form class="modal-content animate" method="POST" action="InsertLogin.php">
+        <div class="imgcontainer">
+            <span style="float:left";><h2>Log In</h2></span>
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        </div>
+        <div class="container">
+            <label style="color: black;font-family: cursive;position: absolute;top: 35%;" ><b>Username:</b></label>
+            <input type="text" placeholder="Enter your Username" name="username" required   >
+
+            <label style="color: black; font-family: cursive;" ><b>Password:</b></label>
+            <input type="password" placeholder="Enter your Password" name="psw" required>
+            <button type="submit" name="login">LOGIN</button>
+            <input type="checkbox" checked="checked"><label style="font-family: cursive;color: black;"><b>Remember my login</b></label>
+        </div>
+        <div class="container" style="background-color:white">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <button type="submit" onclick="window.location.href='Signup.php'" name="signup" style="float: left">Sign Up</button>
+        </div>
+    </form>
+</div>
+</body>
 </html>

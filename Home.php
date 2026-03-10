@@ -1,43 +1,161 @@
-<html>
-<body style="background-image: url(Images/stethoscope.jpg);">
-    <link rel="stylesheet" href="main.css">
-        <div class="header">
-            <ul>
-                <li style="float: left; border-right: none;"> <a href="Home.php" class="logo"> <img src="Images/Pic9.png" width="70px" height="60px"> <strong> WeCare </strong> Online Apppointment System </a> </li>
-            </ul>
-        </div>
-        <div class="centre">
-            <h2 style="text-align:left;"> Welcome!!!</h2><br>
-            <p style="text-align:left;font-size:40px; font-family: cursive; color: black;position: absolute; top: 30%;">Consult Now </p><br>
-            <button onclick="document.getElementById('id01').style.display='block'" style="position: absolute;top: 60%;left:5%;">LOGIN</button>
-            <button onclick="window.location.href='Signup.php'" style="position: absolute;top: 70%;left:5%;">SIGNUP</button>
-        </div>
-        
-        <div class="footer">
-            <ul style="position: absolute;top:90%;background-color:black;">
-                <li> <a href="adminlogin.php">Admin Login </a> </li>
-            </ul>
-        </div>
-<div id="id01" class="modal" >
-    <form class="modal-content animate" method="POST" action="InsertLogin.php">
-        <div class="imgcontainer">
-            <span style="float:left";><h2>Log In</h2></span>
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        </div>
-        <div class="container">
-            <label style="color: black;font-family: cursive;position: absolute;top: 35%;" ><b>Username:</b></label>
-            <input type="text" placeholder="Enter your Username" name="username" required   >
+<?php
+session_start();
+$conn = mysqli_connect('localhost','root','','appointment');
 
-            <label style="color: black; font-family: cursive;" ><b>Password:</b></label>
-            <input type="password" placeholder="Enter your Password" name="psw" required>
-            <button type="submit" name="login">LOGIN</button>
-            <input type="checkbox" checked="checked"><label style="font-family: cursive;color: black;"><b>Remember my login</b></label>
-        </div>
-        <div class="container" style="background-color:white">
-            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <button type="submit" onclick="window.location.href='Signup.php'" name="signup" style="float: left">Sign Up</button>
-        </div>
-    </form>
+if(!isset($_SESSION['username'])){
+    header("Location: Login.php");
+    exit();
+}
+
+$username = $_SESSION['username'];
+
+$sql = "SELECT * FROM patient WHERE username='$username'";
+$result = mysqli_query($conn,$sql);
+$user = mysqli_fetch_assoc($result);
+?>
+
+<html>
+<head>
+
+<title>User Dashboard</title>
+
+<style>
+
+body{
+margin:0;
+font-family: 'Segoe UI', sans-serif;
+background-image: url("Images/appointment.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+height:100vh;
+}
+
+/* HEADER */
+
+.header{
+background: rgba(0,0,0,0.4);
+padding:15px;
+color:white;
+font-size:22px;
+text-align:center;
+letter-spacing:1px;
+}
+
+/* MAIN DASHBOARD */
+
+.dashboard{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:40px;
+margin-top:50px;
+}
+
+/* PROFILE CARD */
+
+.profile{
+background:white;
+width:320px;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+transition:0.3s;
+}
+
+.profile:hover{
+transform:translateY(-5px);
+}
+
+.profile h2{
+text-align:center;
+color:#333;
+}
+
+.profile p{
+font-size:16px;
+margin:8px 0;
+}
+
+/* ACTION PANEL */
+
+.actions{
+display:grid;
+grid-template-columns:repeat(2,200px);
+gap:25px;
+}
+
+/* BUTTON STYLE */
+
+.btn{
+background:white;
+border:none;
+padding:25px;
+font-size:18px;
+border-radius:15px;
+cursor:pointer;
+box-shadow:0 6px 15px rgba(0,0,0,0.25);
+transition:0.3s;
+font-weight:bold;
+}
+
+.btn:hover{
+transform:scale(1.08);
+background:#ff0157;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Welcome <?php echo $_SESSION['username']; ?> to WeCare Appointment Dashboard
 </div>
+
+
+<div class="dashboard">
+
+<!-- PROFILE -->
+
+<div class="profile">
+
+<h2>Your Profile</h2>
+
+<p><b>Name:</b> <?php echo $user['name']; ?></p>
+<p><b>Email:</b> <?php echo $user['email']; ?></p>
+<p><b>Phone:</b> <?php echo $user['phone']; ?></p>
+<p><b>Gender:</b> <?php echo $user['gender']; ?></p>
+
+
+</div>
+
+
+<!-- ACTION BUTTONS -->
+
+<div class="actions">
+
+<button class="btn" onclick="window.location.href='Booking.php'">
+📅 Book Appointment
+</button>
+
+<button class="btn" onclick="window.location.href='ViewAppointment.php'">
+📋 View Appointments
+</button>
+
+<button class="btn" onclick="window.location.href='CancelBooking.php'">
+❌ Cancel Appointment
+</button>
+
+<button class="btn" onclick="window.location.href='Login.php'">
+🚪 Logout
+</button>
+
+</div>
+
+</div>
+
 </body>
 </html>
