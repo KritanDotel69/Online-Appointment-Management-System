@@ -90,6 +90,7 @@ include "DBconnect.php";
                     
                     echo "<tr>
                             <td>" . htmlspecialchars($row['Fname']) . "</td>
+                            <td>" . $row['contact'] . "</td>
                             <td>" . $row['CID'] . "</td>
                             <td>" . $row['DID'] . "</td>
                             <td>" . $row['DOV'] . "</td>

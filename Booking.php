@@ -34,6 +34,9 @@ $session_username = $_SESSION['username'];
 
         <label style="font-size:20px ; font-family:cursive;color:black"><b>Patient Full Name:</b></label><br>
         <input type="text" name="fname" required placeholder="Name of person visiting"><br>
+
+        <label style="font-size:18px;color:black"><b>Contact Number:</b></label>
+        <input type="text" name="contact" required pattern="[0-9]{10}" placeholder="Enter phone number">
         
         <label style="font-size:20px ; font-family:cursive;color:black"><b>Gender:</b></label><br>
         <input type="radio" name="gender" value="female" required>Female
@@ -65,9 +68,6 @@ $session_username = $_SESSION['username'];
             }
             ?>
             </select><br>
-
-        
-
         
 
         <label style="font-size:20px ; font-family:cursive;color:black"><b>Date of Visit:</b></label><br>
@@ -78,22 +78,23 @@ $session_username = $_SESSION['username'];
 
 <?php
 if(isset($_POST['submit'])) {
-    // 3. PROCESS THE DATA
+    
     $fname    = mysqli_real_escape_string($conn, $_POST['fname']);
+    $contact  = mysqli_real_escape_string($conn, $_POST['contact']);
     $gender   = $_POST['gender'];
     $cid      = $_POST['cid'];
-    $did      = $_POST['doctor'];
-    $dov      = $_POST['DOV'];
+    $did      = "";
+    $dov      = mysqli_real_escape_string($conn, $_POST['DOV']);
     $status   = "Booking Registered. Wait for update.";
     $timestamp = date('Y-m-d H:i:s');
 
-    // Use the $session_username here instead of a $_POST variable
-    $sql = "INSERT INTO booking (username, Fname, gender, CID, DID, DOV, Timestamp, Status) 
-            VALUES ('$session_username', '$fname', '$gender', '$cid', '$did', '$dov', '$timestamp', '$status')";
+    
+  $sql = "INSERT INTO booking (username, Fname, contact, gender, CID, DOV, Timestamp, Status) 
+        VALUES ('$session_username', '$fname', '$contact', '$gender', '$cid', '$dov', '$timestamp', '$status')";
 
     if(mysqli_query($conn, $sql)) {
         echo "<h2 style='color:green; text-align:center;'>Booking Successful!</h2>";
-        header("Refresh:2; url=view_appointments.php");
+        header("Refresh:2; url=ViewAppointment.php"); 
     } else {
         echo "Error: " . mysqli_error($conn);
     }

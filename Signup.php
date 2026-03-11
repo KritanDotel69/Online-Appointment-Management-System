@@ -35,10 +35,8 @@ if (isset($_POST['signup'])) {
             $message = "Username or Email already exists!";
             $msg_class = "error";
         } else {
-            // 3. Hash password and Insert
-            $hashed_pwd = password_hash($password, PASSWORD_DEFAULT);
             $sql = "INSERT INTO patient (name, username, email, phone, password) 
-                    VALUES ('$name', '$username', '$email', '$contact', '$hashed_pwd')";
+                    VALUES ('$name', '$username', '$email', '$contact', '$password')";
             
             if (mysqli_query($conn, $sql)) {
                 $message = "Registration Successful! <a href='Login.php'>Login here</a>";

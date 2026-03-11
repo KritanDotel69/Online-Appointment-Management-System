@@ -58,6 +58,7 @@ INSERT INTO `admintable` (`id`, `username`, `password`) VALUES
 CREATE TABLE `booking` (
   `username` varchar(30) NOT NULL,
   `Fname` varchar(30) NOT NULL,
+  `contact` int(10) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `CID` int(11) NOT NULL,
   `DID` int(11) NOT NULL,
@@ -70,8 +71,8 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`username`, `Fname`, `gender`, `CID`, `DID`, `DOV`, `Timestamp`, `Status`) VALUES
-('kritan_dotel', 'Kritan Dotel', 'male', 5, 101, '2020-12-18', '2020-12-17 10:02:48', 'Booking Registered.Wait for the update');
+INSERT INTO `booking` (`username`, `Fname`, `contact`, `gender`, `CID`, `DID`, `DOV`, `Timestamp`, `Status`) VALUES
+('kritan_dotel', 'Kritan Dotel', 9876543210, 'male', 5, 101, '2020-12-18', '2020-12-17 10:02:48', 'Booking Registered.Wait for the update');
 
 -- --------------------------------------------------------
 
