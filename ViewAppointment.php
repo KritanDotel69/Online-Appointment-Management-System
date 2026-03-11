@@ -2,8 +2,17 @@
 session_start();
 include "DBconnect.php"; 
 
-// Optional: If you want to show appointments only for a logged-in user, 
-// you would add: $phone = $_SESSION['phone']; and a WHERE clause.
+$records_per_page = 3; // Show 3 appointments per page
+
+// Get current page from URL, default is 1
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$start_from = ($page - 1) * $records_per_page;
+
+// Count total appointments
+$count_sql = "SELECT COUNT(*) as total FROM booking";
+$count_result = $conn->query($count_sql);
+$total_records = $count_result->fetch_assoc()['total'];
+$total_pages = ceil($total_records / $records_per_page);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +54,28 @@ include "DBconnect.php";
         }
         .pending { background: #ffc107; color: black; }
         .success { background: #28a745; }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pagination a {
+            color: #ff0157;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ff0157;
+            margin: 0 4px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .pagination a:hover {
+            background-color: #ff0157;
+            color: white;
+        }
+        .pagination .active {
+            background-color: #ff0157;
+            color: white;
+            border: 1px solid #ff0157;
+        }
     </style>
 </head>
 <body style="background-image: url(Images/Pic12.jpg); background-size: cover;">
@@ -79,9 +110,7 @@ include "DBconnect.php";
         </thead>
         <tbody>
             <?php
-            // Query to join tables if you want names instead of IDs
-            // For now, fetching directly from booking table based on your previous code
-            $sql = "SELECT * FROM booking ORDER BY DOV DESC";
+            $sql = "SELECT * FROM booking ORDER BY DOV DESC LIMIT $start_from, $records_per_page";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
@@ -104,6 +133,16 @@ include "DBconnect.php";
             ?>
         </tbody>
     </table>
+
+    <!-- Pagination Links -->
+    <div class="pagination">
+        <?php
+        for ($i=1; $i<=$total_pages; $i++) {
+            $active = ($i == $page) ? 'active' : '';
+            echo "<a class='$active' href='?page=".$i."'>".$i."</a>";
+        }
+        ?>
+    </div>
 </div>
 
 </body>

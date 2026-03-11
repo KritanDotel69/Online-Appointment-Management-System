@@ -63,7 +63,7 @@
          <br>
          <p style="font-family: cursive; font-size: 20px;position: absolute;left: 29%;top: 70%;">Username:</p> <input type="text" name="username" style="width: 15%;position: absolute;left: 37%;top: 70%;" required>
          <br>
-         <p style="font-family: cursive; font-size: 20px;position: absolute;left: 54%;top: 70%;">Password:</p> <input type="password" name="password" maxlength="10" minlength="10" style="width: 15%;position: absolute;left: 62%;top: 70%;" required>
+         <p style="font-family: cursive; font-size: 20px;position: absolute;left: 54%;top: 70%;">Password:</p> <input type="password" name="password" maxlength="5" minlength="5" style="width: 15%;position: absolute;left: 62%;top: 70%;" required>
          <br><br><br><br><br>
          <button type="submit" name="submit">REGISTER</button>
      </form>

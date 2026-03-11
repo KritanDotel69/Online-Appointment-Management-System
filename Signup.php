@@ -14,6 +14,7 @@ if (isset($_POST['signup'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email    = mysqli_real_escape_string($conn, $_POST['email']);
     $contact  = mysqli_real_escape_string($conn, $_POST['contact']);
+    $gender   = mysqli_real_escape_string($conn, $_POST['gender']);
     $password = $_POST['pwd'];
     $passwordr = $_POST['pwdr'];
 
@@ -35,8 +36,8 @@ if (isset($_POST['signup'])) {
             $message = "Username or Email already exists!";
             $msg_class = "error";
         } else {
-            $sql = "INSERT INTO patient (name, username, email, phone, password) 
-                    VALUES ('$name', '$username', '$email', '$contact', '$password')";
+            $sql = "INSERT INTO patient (name, username, email, phone, gender, password) 
+                    VALUES ('$name', '$username', '$email', '$contact', '$gender', '$password')";
             
             if (mysqli_query($conn, $sql)) {
                 $message = "Registration Successful! <a href='Login.php'>Login here</a>";
@@ -77,12 +78,17 @@ if (isset($_POST['signup'])) {
         h2 { text-align: center; color: #333; margin-bottom: 20px; }
         .input-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; color: #666; font-size: 14px; }
-        input {
+        input[type=text], input[type=email], input[type=tel], input[type=password] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 6px;
             box-sizing: border-box;
+        }
+        .gender-options {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
         }
         .btn {
             width: 100%;
@@ -133,6 +139,14 @@ if (isset($_POST['signup'])) {
         <div class="input-group">
             <label>Contact Number</label>
             <input type="tel" name="contact" pattern="[0-9]{10,}" required placeholder="1234567890">
+        </div>
+        <div class="input-group">
+            <label>Gender</label>
+            <div class="gender-options">
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+                <label><input type="radio" name="gender" value="Other"> Other</label>
+            </div>
         </div>
         <div class="input-group">
             <label>Password</label>
